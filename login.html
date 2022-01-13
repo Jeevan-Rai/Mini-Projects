@@ -2,7 +2,7 @@
 <html>
     <div class="container" style="width:40%; " style="padding:70%;">
 <head>
-  <title>Registration Portal</title>
+  <title>Login Portal</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -74,48 +74,32 @@ span.psw {
 </head>
 <body>
 
-<h2>Complainer Register</h2>
+<h2>Complainer Login</h2>
 
-<form action="/signup" method="post" style="background-color: #aaeefa;">
+<form action="/login" method="post" style="background-color: #aaeefa;">
   <div class="imgcontainer">
     <!-- <img src="img_avatar2.png" alt="Avatar" class="avatar"> -->
   </div>
 
   <div class="container" style="background-color: #d8f6fd;">
-    <label for="uname"><b>Full Name</b></label>
-    <input type="text" placeholder="Enter name" name="name" required>
-    <label for="uname"><b>Age</b></label>
-    <input type="number" placeholder="age" name="age" required>
-
-    
-    <h1></h1>
-    <!-- <label for="uname"><b>Email</b></label>
-    <input type="email" placeholder="email" name="email" required> -->
-    <h1></h1>
-    <label for="uname"><b>Phone Number</b></label>
-    <input type="number" placeholder="Name" name="phno" required>
-    <h1></h1>
-    <label for="uname"><b>Gender:</b></label>
-    <input type="radio" name="gender" id="male" value="male"  >Male
-    <input type="radio" name="gender" id="female" value="female"  >Female
-    <input type="radio" name="gender" id="other" value="other"  >Other
-    <h1></h1>
-    <label for="uname"><b>Address</b></label>
-    <input type="text" placeholder="Address" name="address" required>
+    <label for="uname"><b>Complainer Name</b></label>
+    <input type="text" placeholder="Enter name" name="uname" required>
 
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
         
-    <button type="submit">Sign Up</button>
+    <button type="submit">Login</button>
     <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-      <a href="/login" style="padding-left: 60%;">Login?</a>
+      <input type="checkbox" checked="checked" name="remember"> Remember me          
+      <a href="/signup" style="padding-left: 59%;">Sign up?</a>
     </label>
+    
   </div>
 
-  <div class="container" style="background-color:#98eff8"><a href="/index">
-    <button type="button" class="cancelbtn">Cancel</button></a>
-    <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+  <div class="container" style="background-color:#98eff8">
+    <a href="index.html">
+    <button type="button" class="cancelbtn" > Cancel</button></a>
+    <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
 
