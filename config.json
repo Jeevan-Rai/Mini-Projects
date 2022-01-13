@@ -1,0 +1,9 @@
+{
+    "params":
+    {
+        "local_server" : "True",
+        "local_uri" : "mysql://root:@localhost/crime_dms",
+        "prod_uri" : "mysql://root:@localhost/crime_dms",
+        "crnt_usr" : ""
+    }
+}
