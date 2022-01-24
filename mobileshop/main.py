@@ -63,3 +63,5 @@ def signup():
             print
             redirect("/signup")
     return render_template('signup.html')
+
+app.run(debug=True)
