@@ -1,0 +1,11 @@
+{
+    "params":
+    {
+        "local_server" : "True",
+        "local_uri" : "mysql://root:@localhost/e_commerce",
+        "prod_uri" : "mysql://root:@localhost/e_commerce",
+        "crnt_usr" : "",
+        "crnt_s_usr" : ""
+
+    }
+}
