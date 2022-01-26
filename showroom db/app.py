@@ -6,7 +6,7 @@ import json
 from sqlalchemy.sql.schema import ForeignKey
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/automotive vehicle showroom database management system'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/automotive_showroom'
 app.secret_key = 'super secret key'
 db = SQLAlchemy(app)
 
