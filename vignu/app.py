@@ -7,7 +7,7 @@ from sqlalchemy.sql.schema import ForeignKey
 from werkzeug.utils import redirect
 
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/automotive_showroom'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/insurance'
 app.secret_key = 'super secret key'
 db = SQLAlchemy(app)
 
@@ -17,13 +17,13 @@ class Customer(db.Model):
     PASSWORD = db.Column(db.String, nullable=False)
     PHONE_NO = db.Column(db.Integer, nullable=False)
 
-class Scheme(db.Model):
+class Schemes(db.Model):
     S_ID = db.Column(db.Integer, primary_key=True)
     DESC = db.Column(db.String, nullable=False)
 
 @app.route("/")
 def home():
-    sch = db.session.query(Scheme.DESC).all()
+    sch = db.session.query(Schemes.DESC).all()
     return render_template("c_index.html", sch=sch)
 
 @app.route("/c_signup")
