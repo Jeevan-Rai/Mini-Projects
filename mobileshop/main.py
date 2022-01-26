@@ -11,11 +11,33 @@ import base64
 
 with open('config.json', 'r') as c:
     params = json.load(c)["params"]
+
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = params["local_uri"]
 app.secret_key = 'super secret key'
 db = SQLAlchemy(app)
 
+class Products(db.Model):
+    P_ID = db.Column(db.Integer, primary_key=True)
+    P_NAME = db.Column(db.String, nullable=False)
+    COST = db.Column(db.Float, nullable=False)
+    COUNT = db.Column(db.Integer, nullable=False)
+    # S_ID = db.Column(db.Integer, ForeignKey(Seller.S_ID), nullable=False)
+    # C_ID = db.Column(db.Integer, ForeignKey(Category.C_ID), nullable=False)
+    P_IMG = db.Column(db.Text, nullable=False)
+    P_DESC = db.Column(db.String, nullable=False)
+
+class Customer(db.Model):
+    CUST_ID = db.Column(db.Integer, primary_key=True)
+    F_NAME = db.Column(db.String(10), nullable=False)
+    L_NAME = db.Column(db.String(10), nullable=False)
+    ADDRESS = db.Column(db.String(120), nullable=False)
+    PH_NO = db.Column(db.Integer, nullable=False)
+    E_MAIL = db.Column(db.String(30), nullable=False)
+    GENDER = db.Column(db.String(10), nullable=False)
+    USERNAME = db.Column(db.String(20), unique=True, nullable=False)
+    PASSWORD = db.Column(db.String(8), nullable=False)
 
 @app.route("/")
 def home():
