@@ -76,15 +76,12 @@
             </div><i class="fa fa-angle-right"></i>
             </div>
           </div>
-          {% for prdcts in products %}
-          {% set pimg = prdcts.P_IMG %}
+          {% for prdcts in sch %}
           <div class="col-md-4">
             <div class="product-item">
               <a href="#"><img width="130" height="110" src="/static/assets/images/{{ prdcts.P_IMG }}"/></a>
               <div class="down-content">
-                <a href="#"><h4>{{ prdcts.P_NAME }}</h4></a>
-                <h6>{{ prdcts.COST }}</h6>
-                <p>{{ prdcts.P_DESC }}</p>
+                <a href="#"><h4>{{ prdcts.DESC }}</h4></a>
                 <!-- <ul class="stars">
                   <li><i class="fa fa-star"></i></li>
                   <li><i class="fa fa-star"></i></li>
