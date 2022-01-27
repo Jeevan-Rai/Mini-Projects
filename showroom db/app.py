@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import request
 import json
 from sqlalchemy.sql.schema import ForeignKey
+from werkzeug.utils import redirect
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'mysql://root:@localhost/automotive_showroom'
@@ -37,15 +38,15 @@ class Employee(db.Model):
     PHONE_NUMBER = db.Column(db.Integer, nullable=False)
     B_ID = db.Column(db.Integer, ForeignKey(Showroom_branch.B_ID))
 
-
 class Customer(db.Model):
     CUST_ID = db.Column(db.Integer, primary_key=True)
     CUST_NAME = db.Column(db.String, nullable=False)
     address = db.Column(db.String, nullable=False)
     PHONE_NO = db.Column(db.Integer, nullable=False)
-    # SER_ID = db.Column(db.Integer, ForeignKey(Support_System.SER_ID), nullable = False)
+    # SER_ID = db.Column(db.Integer, ForeignKey(Support_System.SER_ID))
     CAR_ID = db.Column(db.Integer, ForeignKey(Car_model.CAR_ID))
-
+    USERNAME = db.Column(db.String, nullable=False)
+    PASSWORD = db.Column(db.String, nullable=False)
 
 class Support_System(db.Model):
     SER_ID = db.Column(db.Integer, primary_key=True)
@@ -58,10 +59,10 @@ class Support_System(db.Model):
 def home():
     return render_template("index.html")
 
-@app.route("/u_signup")
+@app.route("/u_signup",methods=["GET","POST"])
 def signup():
     if(request.method == "POST"):
-        try:
+        # try:
             fname = request.form.get("Fname")
             lname = request.form.get("Lname")
             email = request.form.get("email")
@@ -70,21 +71,20 @@ def signup():
             address = request.form.get("address")
             uname = request.form.get("username")
             psw = request.form.get("psw")
-            entry = Customer(F_NAME=fname, L_NAME=lname, ADDRESS=address, PH_NO=phno,
-                             E_MAIL=email, GENDER=gender, USERNAME=uname, PASSWORD=psw)
+            entry = Customer(CUST_NAME=fname, address=address, PHONE_NO=phno,
+                             USERNAME=uname, PASSWORD=psw)
             db.session.add(entry)
-            data = db.session.query(Customer.CUST_ID).filter_by(
-                USERNAME=uname).first()
-            db.session.flush()
-            entry1 = Cart(CUST_ID=data[0])
-            db.session.add(entry1)
+            # data = db.session.query(Customer.CUST_ID).filter_by(
+            #     USERNAME=uname).first()
+            # db.session.flush()
+            # entry1 = Cart(CUST_ID=data[0])
+            # db.session.add(entry1)
             db.session.commit()
             return redirect("/")
-        except:
-            print
-            redirect("/signup")
+        # except:
+            redirect("/u_signup")
     return render_template("u_signup.html")
-@app.route("/u_login")
+@app.route("/u_login",methods=["GET","POST"])
 def login():
     if(request.method == "POST"):
         uname = request.form.get("uname")
@@ -92,10 +92,12 @@ def login():
         exists = db.session.query(Customer.USERNAME).filter_by(
             USERNAME=uname, PASSWORD=psw).first() is not None
         if(exists):
-            params["crnt_usr"] = uname
+            # params["crnt_usr"] = uname
             session['cust_login'] = True
             return redirect('/')
         else:
-            return redirect('/signup')
-    return render_template('login.html')
+            return redirect('/u_signup')
+    return render_template('u_login.html')
+
+
 app.run(debug=True)
