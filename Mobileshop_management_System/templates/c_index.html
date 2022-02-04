@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/templatemo-sixteen.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/owl.css') }}">
+<head>
+
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">About</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li style="float:right"><a class="active" href="#about">Login/Signup</a></li>
+</ul>
+<div class="latest-products">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Latest Products</h2>
+            <div class="container" style="background-color:#ffffff; padding-left: 50%;">
+              <a href="/c_cart.html">
+                  <button type="button" class="cancelbtn" style="color: rgb(255, 255, 255);" style="border: #000000;">Cart products</button></a>
+          </div><i class="fa fa-angle-right"></i>
+          </div>
+        </div>
+        {% for prdcts in products %}
+        {% set pimg = prdcts.P_IMG %}
+        <div class="col-md-4">
+          <div class="product-item">
+            <a href="#"><img width="130" height="110" src="/static/assets/images/{{ prdcts.P_IMG }}"/></a>
+            <div class="down-content">
+              <a href="#"><h4>{{ prdcts.P_NAME }}</h4></a>
+              <h6>{{ prdcts.COST }}</h6>
+              <p>{{ prdcts.P_DESC }}</p>
+              <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+                <li><i class="fa fa-star"></i></li>
+              </ul>
+              <div class="container" style="background-color:#ffffff; padding-left: 50%;">
+                <a href="/">
+                    <button type="button" class="cancelbtn" style="color: rgb(255, 255, 255);"
+                        style="border: #000000;">Add to Cart</button></a>
+            </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+</body>
+<style>
+    .conty {
+      width: 98%;
+      padding: 16px;                       
+      margin-right: auto;
+      margin-left: auto;
+      background-color: #f5f5f5;
+    }
+    footer {
+      position :fixed;
+      width: 98%;
+      bottom : 0;
+      height : 10px;
+      margin-top : 10px;
+      width: 100%;
+      padding: 25px;                       
+      margin-right: auto;
+      margin-left: auto;
+      background-color: #f5f5f5;
+    }
+  </style>
+<footer>
+    <div class="footer"  >
+           <h3 style="text-align:left;"> Copyright &copy; Varsha & Malavika</h3>
+           <br>     
+    </div>
+  </footer>
+</html>
